@@ -154,6 +154,10 @@ Japan was one of the first countries in Asia to establish a modern nation after 
 경청해 주셔서 감사합니다.
 
 - https://www.pa.go.kr/research/contents/speech/index.jsp, [일본 국빈방문]일본 국회연설, 2003.06.09
+## Ref
+- [대통령기록관_행정안전부 대통령기록관_대통령연설기록 연설문](https://www.data.go.kr/data/15084167/fileData.do#tab-layer-openapi)
+- https://stackoverflow.com/questions/45470964/python-extracting-text-from-webpage-pdf
+- https://pypdf.readthedocs.io/en/latest/user/extract-text.html
 
 ## Development environment setting
 ```bash
