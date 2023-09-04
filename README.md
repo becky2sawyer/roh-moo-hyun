@@ -1,4 +1,4 @@
-# roh-moo-yun
+# roh-moo-hyun
 - South Korean former president Roh Moo-hyun, a politician who dedicated his life to democracy and human rights. I pay my respects to Roh Moo-hyun
 
 ![roh](https://img.seoul.co.kr//img/upload/2016/05/23/SSI_20160523162354.jpg)
@@ -154,3 +154,9 @@ Japan was one of the first countries in Asia to establish a modern nation after 
 경청해 주셔서 감사합니다.
 
 - https://www.pa.go.kr/research/contents/speech/index.jsp, [일본 국빈방문]일본 국회연설, 2003.06.09
+
+## Development environment setting
+```bash
+$ pdm add requests
+$ pdm add --dev pytest jupyter
+```
