@@ -164,3 +164,8 @@ Japan was one of the first countries in Asia to establish a modern nation after 
 $ pdm add requests
 $ pdm add --dev pytest jupyter
 ```
+
+```bash
+$ docker build -t roh-moo-hyun:0.2.0 .
+$ docker run -d --name roh-moo-hyun020 -v "$PWD":/usr/src/app roh-moo-hyun:0.2.0
+```

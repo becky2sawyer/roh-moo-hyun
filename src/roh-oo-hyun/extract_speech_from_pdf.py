@@ -40,7 +40,7 @@ def save_parquet(batch_data: list, idx: int):
     to_parquet_df = pd.DataFrame(batch_data,
                                  columns=['division_number', 'president', 'title', 'date', 'pdf_url', 'location',
                                           'speech_text'])
-    parquet_file_name = f"president_speeches_batch_data_{idx/1000}.parquet"
+    parquet_file_name = f"president_speeches_batch_data_{int(idx/1000)}.parquet"
     to_parquet_df.to_parquet(parquet_file_name)
     print(f"save parquet:{parquet_file_name}")
 
@@ -74,8 +74,10 @@ for idx, row in df.iterrows():
     # 데이터베이스에 저장할 데이터를 리스트에 저장
     batch_data.append((division_number, president, title, date, pdf_url, location, speech_text))
 
-    if idx % 1000 == 0:
-        save_parquet(batch_data, idx)
-        insert_db(batch_data)
-        print(f"insert db:{idx}")
-        batch_data = []
+    print(idx)
+    if idx != 0:
+        if idx % 1000 == 0:
+            save_parquet(batch_data, idx)
+            insert_db(batch_data)
+            print(f"insert db:{idx}")
+            batch_data = []
