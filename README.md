@@ -47,13 +47,9 @@ Honorable Members,
 
 Japan was one of the first countries in Asia to establish a modern nation after adopting Western culture. At one time, it followed a path of imperialism, causing great suffering to Korea and other Asian countries. However, postwar Japan achieved remarkable economic development and democracy, and it is now a country admired by the world. Moreover, Japan has maintained a strong commitment to the "three non-nuclear principles" and pacifism. It has also become the
 
-```
 존경하는 와타누키 다미스케(綿貫民輔) 중의원 의장,
-
 구라타 히로유키(倉田寬之) 참의원 의장,
-
 그리고 중의원과 참의원의 의원 여러분,
-
 일본의 민주주의와 평화수호의 전당인 이곳 국회의사당에 서게 된 것을 매우 영광스럽게 생각합니다. 따뜻하게 환영해주신 의원 여러분께 진심으로 감사드립니다. 일본 국민과 각계의 지도자 여러분들께도 깊은 감사의 말씀을 드립니다.
 
 나는 제 2차 세계대전이 끝난 이듬해에 태어났습니다. 이른바 '戰後 세대' 입니다. 그리고 일본에서 가장 가까운 부산에서, 일본이 민주주의와 경제발전을 이룩해오는 과정을 인상깊게 지켜보면서 성장했습니다.
@@ -156,6 +152,5 @@ Japan was one of the first countries in Asia to establish a modern nation after 
 우리가 굳게 손잡고 나아갈 때, 미래는 우리의 것이 될 것입니다.
 
 경청해 주셔서 감사합니다.
-```
 
-
+- https://www.pa.go.kr/research/contents/speech/index.jsp, [일본 국빈방문]일본 국회연설, 2003.06.09
