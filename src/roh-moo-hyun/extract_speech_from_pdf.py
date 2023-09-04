@@ -7,7 +7,7 @@ import io
 
 def insert_db(batch_data: list):
     # 리스트에 저장된 데이터를 한번에 데이터베이스에 저장
-    connection = sqlite3.connect("president_speeches.db")
+    connection = sqlite3.connect("data/db/president_speeches.db")
     cursor = connection.cursor()
     # 테이블 생성
     cursor.execute("""
@@ -40,18 +40,18 @@ def save_parquet(batch_data: list, idx: int):
     to_parquet_df = pd.DataFrame(batch_data,
                                  columns=['division_number', 'president', 'title', 'date', 'pdf_url', 'location',
                                           'speech_text'])
-    parquet_file_name = f"president_speeches_batch_data_{int(idx/1000)}.parquet"
+    parquet_file_name = f"data/parquet/president_speeches_batch_data_{int(idx/100)}.parquet"
     to_parquet_df.to_parquet(parquet_file_name)
     print(f"save parquet:{parquet_file_name}")
 
 
 # csv 파일 열기
-df = pd.read_csv("note/president_archive_ministry_of_public_safety_president_speech_record_speech_20220817.csv")
+df = pd.read_csv("data/datagokr/president_archive_ministry_of_public_safety_president_speech_record_speech_roh_20220817.csv")
 
 # DataFrame의 행(연설문)을 순회하며 데이터베이스에 저장할 데이터를 리스트에 저장
 batch_data = []
+i = 1
 for idx, row in df.iterrows():
-
     # 구분번호, 대통령, 글제목, 연설일자, 원문보기, 연설장소 를 변수에 저장
     division_number = row['구분번호']
     president = row['대통령']
@@ -74,10 +74,17 @@ for idx, row in df.iterrows():
     # 데이터베이스에 저장할 데이터를 리스트에 저장
     batch_data.append((division_number, president, title, date, pdf_url, location, speech_text))
 
-    print(idx)
-    if idx != 0:
-        if idx % 1000 == 0:
-            save_parquet(batch_data, idx)
-            insert_db(batch_data)
-            print(f"insert db:{idx}")
-            batch_data = []
+    print(i)
+    if i % 100 == 0:
+        save_parquet(batch_data, i)
+        insert_db(batch_data)
+        print(f"insert db:{i}")
+        batch_data = []
+
+    i = i + 1
+
+save_parquet(batch_data, i + 100)
+insert_db(batch_data)
+print(f"insert db:{i}")
+print("END".center(30, "*"))
+

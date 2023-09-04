@@ -1,4 +1,3 @@
-
 ###
 # curl -X 'GET'
 #  'https://api.odcloud.kr/api/15084167/v1/uddi:1c8b5454-bd4e-45db-98f7-fe94d71f271b?page=1&perPage=10&serviceKey=ruy8A%2Fv%2FsyRNrte7Dyj7znYCM1HtSahtkKc7ZHTQUu%2B9dzLXkgdmTkbKhSwUqNwY2ksAHgrKPg%2FeV2SGtl1N6A%3D%3D'
@@ -7,7 +6,6 @@ GET https://api.odcloud.kr/api/15084167/v1/uddi:1c8b5454-bd4e-45db-98f7-fe94d71f
     serviceKey=ruy8A%2Fv%2FsyRNrte7Dyj7znYCM1HtSahtkKc7ZHTQUu%2B9dzLXkgdmTkbKhSwUqNwY2ksAHgrKPg%2FeV2SGtl1N6A%3D%3D
 accept: */*
 
-###
 
 
 
