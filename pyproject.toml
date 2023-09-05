@@ -11,6 +11,7 @@ dependencies = [
     "pandas>=2.1.0",
     "pyarrow>=13.0.0",
     "fastparquet>=2023.8.0",
+    "jupyter>=1.0.0",
 ]
 requires-python = ">=3.9"
 readme = "README.md"
