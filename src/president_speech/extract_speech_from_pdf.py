@@ -3,7 +3,9 @@ import sqlite3
 from pypdf import PdfReader
 import requests
 import io
-from roh_moo_hyun.db.connection_manager import ConnectionManager
+from president_speech.db.connection_manager import ConnectionManager
+
+BASE_PATH = "src/president_speech/db"
 
 
 def insert_db(batch_data: list):
@@ -36,19 +38,20 @@ def insert_db(batch_data: list):
     connection_manager.close()
 
 
-def save_parquet(batch_data: list, idx: int):
+def save_parquet(batch_data: list, idx: int, no_str: str):
     """batch_data 를 DataFrame 으로 변환 및 저장"""
     to_parquet_df = pd.DataFrame(batch_data,
                                  columns=['division_number', 'president', 'title', 'date', 'pdf_url', 'location',
                                           'speech_text'])
-    parquet_file_name = f"data/parquet/president_speeches_batch_data_{int(idx/100)}.parquet"
+    parquet_file_name = f"{BASE_PATH}/parquet/{no_str}/president_speeches{int(idx/100)}.parquet"
     to_parquet_df.to_parquet(parquet_file_name)
     print(f"save parquet:{parquet_file_name}")
 
 
 def run():
+    no_str = "01"
     # csv 파일 열기
-    df = pd.read_csv("data/datagokr/president_archive_ministry_of_public_safety_president_speech_record_speech_roh_20220817.csv")
+    df = pd.read_csv(f"{BASE_PATH}/datagokr/p{no_str}.csv")
 
     # DataFrame의 행(연설문)을 순회하며 데이터베이스에 저장할 데이터를 리스트에 저장
     batch_data = []
@@ -78,14 +81,14 @@ def run():
 
         print(i)
         if i % 100 == 0:
-            save_parquet(batch_data, i)
+            save_parquet(batch_data, i, no_str=no_str)
             insert_db(batch_data)
             print(f"insert db:{i}")
             batch_data = []
 
         i = i + 1
 
-    save_parquet(batch_data, i + 100)
+    save_parquet(batch_data, i + 100, no_str)
     insert_db(batch_data)
     print(f"insert db:{i}")
     print("END".center(30, "*"))

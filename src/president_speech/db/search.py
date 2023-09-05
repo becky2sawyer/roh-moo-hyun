@@ -1,4 +1,4 @@
-from roh_moo_hyun.db.connection_manager import ConnectionManager
+from president_speech.db.connection_manager import ConnectionManager
 
 
 def title(keyword: str):

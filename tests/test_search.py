@@ -1,4 +1,4 @@
-from roh_moo_hyun.db.search import title, speech
+from president_speech.db.search import title, speech
 
 
 def test_title():
