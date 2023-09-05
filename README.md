@@ -49,6 +49,6 @@ $ pdm add --dev pytest jupyter
 ```
 
 ```bash
-$ docker build -t roh-moo-hyun:0.2.0 .
-$ docker run -d --name roh-moo-hyun020 -v "$PWD":/usr/src/app roh-moo-hyun:0.2.0
+$ docker build -t roh_moo_hyun:0.2.0 .
+$ docker run -d --name roh-moo-hyun020 -v "$PWD":/usr/src/app roh_moo_hyun:0.2.0
 ```

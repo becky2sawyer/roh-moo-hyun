@@ -1,6 +1,6 @@
 [project]
 name = "roh-moo-hyun"
-version = "0.2.2"
+version = "0.3.0"
 description = "South Korean former president Roh Moo-hyun, a politician who dedicated his life to democracy and human rights. I pay my respects to Roh Moo-hyun."
 authors = [
     {name = "dmario24", email = "data.mario24@gmail.com"},

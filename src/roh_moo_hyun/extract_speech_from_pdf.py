@@ -3,11 +3,13 @@ import sqlite3
 from pypdf import PdfReader
 import requests
 import io
+from roh_moo_hyun.db.connection_manager import ConnectionManager
 
 
 def insert_db(batch_data: list):
     # 리스트에 저장된 데이터를 한번에 데이터베이스에 저장
-    connection = sqlite3.connect("data/db/president_speeches.db")
+    connection_manager = ConnectionManager()
+    connection = connection_manager.get_connection()
     cursor = connection.cursor()
     # 테이블 생성
     cursor.execute("""
@@ -20,7 +22,6 @@ def insert_db(batch_data: list):
     location        TEXT,
     speech_text     TEXT);
     """)
-    connection.commit()
 
     cursor.executemany("""INSERT INTO president_speeches (
     division_number, 
@@ -30,9 +31,9 @@ def insert_db(batch_data: list):
     pdf_url, 
     location, 
     speech_text) VALUES (?, ?, ?, ?, ?, ?, ?);""", batch_data)
-    connection.commit()
-    # 데이터베이스 연결 종료
-    connection.close()
+
+    # SQLite DB 파일의 연결을 닫습니다.
+    connection_manager.close()
 
 
 def save_parquet(batch_data: list, idx: int):
