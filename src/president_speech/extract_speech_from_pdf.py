@@ -49,7 +49,7 @@ def save_parquet(batch_data: list, idx: int, no_str: str):
 
 
 def run():
-    no_str = "01"
+    no_str = "11"
     # csv 파일 열기
     df = pd.read_csv(f"{BASE_PATH}/datagokr/p{no_str}.csv")
 
