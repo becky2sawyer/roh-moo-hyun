@@ -46,46 +46,50 @@ def save_parquet(batch_data: list, idx: int):
     print(f"save parquet:{parquet_file_name}")
 
 
-# csv 파일 열기
-df = pd.read_csv("data/datagokr/president_archive_ministry_of_public_safety_president_speech_record_speech_roh_20220817.csv")
+def run():
+    # csv 파일 열기
+    df = pd.read_csv("data/datagokr/president_archive_ministry_of_public_safety_president_speech_record_speech_roh_20220817.csv")
 
-# DataFrame의 행(연설문)을 순회하며 데이터베이스에 저장할 데이터를 리스트에 저장
-batch_data = []
-i = 1
-for idx, row in df.iterrows():
-    # 구분번호, 대통령, 글제목, 연설일자, 원문보기, 연설장소 를 변수에 저장
-    division_number = row['구분번호']
-    president = row['대통령']
-    title = row['글제목']
-    date = row['연설일자']
-    pdf_url = row['원문보기']
-    location = row['연설장소']
-    
-    r = requests.get(pdf_url)
-    f = io.BytesIO(r.content)
+    # DataFrame의 행(연설문)을 순회하며 데이터베이스에 저장할 데이터를 리스트에 저장
+    batch_data = []
+    i = 1
+    for idx, row in df.iterrows():
+        # 구분번호, 대통령, 글제목, 연설일자, 원문보기, 연설장소 를 변수에 저장
+        division_number = row['구분번호']
+        president = row['대통령']
+        title = row['글제목']
+        date = row['연설일자']
+        pdf_url = row['원문보기']
+        location = row['연설장소']
 
-    try:
-        reader = PdfReader(f)
-        page = reader.pages[0]
-        # 연설원문을 변수에 저장
-        speech_text = page.extract_text().replace("\n", "")
-    except:
-        speech_text = "ERR"
+        r = requests.get(pdf_url)
+        f = io.BytesIO(r.content)
 
-    # 데이터베이스에 저장할 데이터를 리스트에 저장
-    batch_data.append((division_number, president, title, date, pdf_url, location, speech_text))
+        try:
+            reader = PdfReader(f)
+            page = reader.pages[0]
+            # 연설원문을 변수에 저장
+            speech_text = page.extract_text().replace("\n", "")
+        except:
+            speech_text = "ERR"
 
-    print(i)
-    if i % 100 == 0:
-        save_parquet(batch_data, i)
-        insert_db(batch_data)
-        print(f"insert db:{i}")
-        batch_data = []
+        # 데이터베이스에 저장할 데이터를 리스트에 저장
+        batch_data.append((division_number, president, title, date, pdf_url, location, speech_text))
 
-    i = i + 1
+        print(i)
+        if i % 100 == 0:
+            save_parquet(batch_data, i)
+            insert_db(batch_data)
+            print(f"insert db:{i}")
+            batch_data = []
 
-save_parquet(batch_data, i + 100)
-insert_db(batch_data)
-print(f"insert db:{i}")
-print("END".center(30, "*"))
+        i = i + 1
+
+    save_parquet(batch_data, i + 100)
+    insert_db(batch_data)
+    print(f"insert db:{i}")
+    print("END".center(30, "*"))
+
+
+run()
 
