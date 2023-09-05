@@ -28,3 +28,7 @@ test = [
 doc = [
     "mkdocs>=1.5.2",
 ]
+
+[project.scripts]
+rmh-db-init = 'roh_moo_hyun.extract_speech_from_pdf:run'
+rmh-search = 'roh_moo_hyun.cli:search'
