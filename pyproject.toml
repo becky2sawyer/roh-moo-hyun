@@ -22,6 +22,18 @@ build-backend = "pdm.backend"
 
 [tool.pdm.dev-dependencies]
 dev = [
-    "pytest>=7.4.1",
     "jupyter>=1.0.0",
 ]
+lint = [
+    "flake8",
+    "black"
+]
+test = ["pytest", "pytest-cov"]
+doc = ["mkdocs"]
+
+[tool.pdm.scripts]
+ptest = "pytest -s"
+test = "pytest"
+
+[project.scripts]
+rmh-search = 'roh_moo_hyun.cli:search'
