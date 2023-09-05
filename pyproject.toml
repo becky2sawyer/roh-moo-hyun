@@ -32,3 +32,12 @@ doc = [
 [project.scripts]
 rmh-db-init = 'roh_moo_hyun.extract_speech_from_pdf:run'
 rmh-search = 'roh_moo_hyun.cli:search'
+
+[tool.setuptools.packages.find]
+# scanning for namespace packages is true by default in pyproject.toml, so
+# you do NOT need to include the following line.
+namespaces = true
+where = ["src"]
+
+[tool.setuptools.package-data]
+"roh_moo_hyun.db" = ["init.db"]

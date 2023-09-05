@@ -1,10 +1,13 @@
 import sqlite3
+import os
 
 
 class ConnectionManager:
 
     def __init__(self, database_file="init.db"):
-        self.database_file = database_file
+        data_path = os.path.join(os.path.dirname(__file__), database_file)
+        # print(data_path.center(100, "*"))
+        self.database_file = data_path
         self.connection = None
 
     def connect(self):

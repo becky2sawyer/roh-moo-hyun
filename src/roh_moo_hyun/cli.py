@@ -12,9 +12,9 @@ def search():
     args = parser.parse_args()
 
     if args.title:
-        title(args.title)
+        title(args.keyword)
 
     elif args.speech:
-        speech(args.title)
+        speech(args.keyword)
     else:
         print("An undefined functional call has occurred.")
