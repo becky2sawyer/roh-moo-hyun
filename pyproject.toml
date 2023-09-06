@@ -1,9 +1,9 @@
 [project]
-name = "roh-moo-hyun"
-version = "0.4.1"
-description = ""
+name = "president-speech"
+version = "0.5.0"
+description = "helper pip package module for analyzing presidential speech records (including basic data)"
 authors = [
-    {name = "becky2sawyer", email = "becky2sawyer@gmail.com"},
+    {name = "dmario24", email = "data.mario24@gmail.com"},
 ]
 dependencies = [
     "requests>=2.31.0",
@@ -11,6 +11,7 @@ dependencies = [
     "pandas>=2.1.0",
     "pyarrow>=13.0.0",
     "fastparquet>=2023.8.0",
+    "jupyter>=1.0.0",
 ]
 requires-python = ">=3.9"
 readme = "README.md"
@@ -40,12 +41,12 @@ namespaces = true
 where = ["src"]
 
 [tool.setuptools.package-data]
-"roh_moo_hyun.db" = ["init.db"]
+"president_speech.db" = ["init.db"]
 
 [tool.pdm.scripts]
 ptest = "pytest -s"
 test = "pytest"
 
 [project.urls]
-"Homepage" = "https://github.com/becky2sawyer/roh-moo-hyun"
-"Bug Tracker" = "https://github.com/becky2sawyer/roh-moo-hyun/issues"
+"Homepage" = "https://github.com/edu-data-mario/president-speech/president-speech"
+"Bug Tracker" = "https://github.com/edu-data-mario/president-speech/issues"
